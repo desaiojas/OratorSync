@@ -1,0 +1,127 @@
+/* Basic styling for the entire page */
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f0f0e0; /* Light yellow background */
+}
+
+.page-container {
+    width: 90%;
+    max-width: 500px;
+    border: 2px solid black;
+    border-radius: 10px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Header Section */
+.header-section {
+    background-color: #d8d8f0; /* Light blue */
+    text-align: center;
+    padding: 20px 0;
+    border-bottom: 2px solid black;
+}
+
+.welcome-text {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    margin: 0;
+}
+
+/* Content Area (main section) */
+.content-area {
+    background-color: #f8f8f0; /* Off-white background */
+    padding: 20px;
+}
+
+.stats-container {
+    background-color: #e6d7e6; /* Light purple */
+    border: 2px solid black;
+    border-radius: 5px;
+    padding: 20px;
+    text-align: center;
+}
+
+.stats-title {
+    color: #000080; /* Navy blue */
+    font-size: 22px;
+    text-decoration: underline;
+}
+
+/* Chart Styles */
+.chart-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    position: relative;
+    padding: 20px;
+}
+
+.y-axis {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 200px;
+    position: absolute;
+    left: 10px;
+    top: 20px;
+}
+
+.y-label {
+    font-size: 12px;
+    transform: translateY(-50%);
+}
+
+.y-text {
+    position: absolute;
+    left: -40px;
+    bottom: 50%;
+    transform: rotate(-90deg) translateX(50%);
+    font-weight: bold;
+}
+
+.bars {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    border-left: 1px solid black;
+    border-bottom: 1px solid black;
+    height: 200px;
+    width: 100%;
+}
+
+.bar {
+    width: 15px;
+    height: 95%; /* Make all bars nearly full height */
+    background-color: #f2c79a; /* Light orange */
+    border: 1px solid black;
+    margin: 0 1px;
+}
+
+.x-axis-label {
+    margin-top: 10px;
+    font-weight: bold;
+    color: #333;
+}
+
+/* Button Section */
+.resume-button {
+    background-color: #90ee90; /* Light green */
+    color: #000080; /* Navy blue */
+    font-size: 24px;
+    font-weight: bold;
+    text-decoration: underline;
+    text-align: center;
+    padding: 20px;
+    display: block;
+    border: 2px solid black;
+    border-top: none;
+    cursor: pointer;
+}
