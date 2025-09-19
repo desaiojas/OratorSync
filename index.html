@@ -9,7 +9,7 @@
 <body>
     <div class="page-container">
         <header class="header-section">
-            <h1 class="welcome-text">Welcome, <span class="user-name">____ (Name)</span></h1>
+            <h1 class="welcome-text">Welcome!</h1>
         </header>
 
         <main class="content-area">
@@ -17,10 +17,10 @@
                 <h2 class="stats-title">Your Stats</h2>
                 <div class="chart-container">
                     <div class="y-axis">
+                        <span class="y-text">Fluency</span>
                         <span class="y-label">100%</span>
                         <span class="y-label">50%</span>
                         <span class="y-label">0%</span>
-                        <span class="y-text">Fluency Score</span>
                     </div>
                     <div class="bars">
                         <div class="bar"></div>
@@ -50,7 +50,6 @@
                         <div class="bar"></div>
                         <div class="bar"></div>
                     </div>
-                    <p class="x-axis-label">Letters in the alphabet</p>
                 </div>
             </section>
         </main>
@@ -59,5 +58,20 @@
             Resume Your Journey
         </a>
     </div>
+        <script>
+            // Array of 26 integers representing the height (%) of each orange bar.
+            // Defaults to 100 (current visual height). You can change these values later.
+            const barHeights = new Array(26).fill(100);
+            // Expose globally so other scripts or the console can modify them later
+            window.barHeights = barHeights;
+
+            // Apply heights to existing .bar elements (use percentage values)
+            document.addEventListener('DOMContentLoaded', () => {
+                const bars = document.querySelectorAll('.bar');
+                for (let i = 0; i < bars.length && i < barHeights.length; i++) {
+                    bars[i].style.height = barHeights[i] + '%';
+                }
+            });
+        </script>
 </body>
 </html>
