@@ -50,9 +50,12 @@ body {
 }
 
 .stats-title {
-    color: #000080; /* Navy blue */
+    color: #333; /* neutral dark color */
     font-size: 22px;
-    text-decoration: underline;
+    text-decoration: none;
+    /* visually raise the title without changing layout height */
+    position: relative;
+    top: -20px; /* moved slightly more up */
 }
 
 /* Chart Styles */
@@ -72,19 +75,32 @@ body {
     position: absolute;
     left: 0px;
     top: 20px;
+    /* reserve horizontal space so labels don't overlap bars; slightly narrower so labels sit a bit closer to the bars */
+    width: 64px;
+    padding-left: 8px;
 }
 
 .y-label {
     font-size: 12px;
-    transform: translateY(-50%);
+    /* place labels to the left of the bars and avoid vertical shifting which caused overlap */
+    transform: none;
+    text-align: right;
+    margin-right: 2px; /* bring percentages a little closer to the bars */
 }
 
 .y-text {
+    /* Center the title so its midpoint aligns with the percentage text column.
+       If that would overlap other elements, it is positioned higher to avoid collisions. */
     position: absolute;
-    left: -40px;
-    bottom: 50%;
-    transform: rotate(-90deg) translateX(50%);
+    top: -46px;               /* moved down closer to percentages but still clear of letters/lines */
+    left: 48px;               /* place center roughly where the percentages are centered */
+    transform: translateX(-50%); /* center the text at the left coordinate */
+    width: auto;
+    text-align: center;
     font-weight: bold;
+    white-space: nowrap;
+    z-index: 4;               /* sit above other chart elements */
+    pointer-events: none;     /* let clicks pass through */
 }
 
 .bars {
@@ -95,17 +111,62 @@ body {
     border-bottom: 1px solid black;
     height: 200px;
     /* leave space on the left so bars don't overlap the y-axis labels */
-    width: calc(100% - 80px);
-    margin-left: 80px; /* push bars to the right */
+    /* smaller left margin so bars sit closer to the percentages but still clear the label column */
+    font-size: 12px; /* make ch units match 12px for bar width */
+    font-family: Arial, sans-serif;
+    width: calc(100% - 72px);
+    margin-left: 72px; /* push bars to the right to clear label area; reduced so bars sit just next to percentages */
 }
 
 .bar {
-    width: 15px;
+    width: 1.5ch; /* slightly thicker: 1.5 characters at 12px */
     height: 95%; /* Make all bars nearly full height */
     background-color: #f2c79a; /* Light orange */
     border: 1px solid black;
     margin: 0 1px;
+    box-sizing: border-box;
+    position: relative; /* allow placing the letter label above each bar */
 }
+
+/* Letter labels above each bar (a - z). Using ::before so no HTML changes required. */
+.bar::before {
+    content: "";
+    position: absolute;
+    top: -18px; /* place above the bar */
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 12px;
+    line-height: 1;
+    color: #000;
+    white-space: nowrap;
+}
+
+.bars .bar:nth-child(1)::before  { content: "a"; }
+.bars .bar:nth-child(2)::before  { content: "b"; }
+.bars .bar:nth-child(3)::before  { content: "c"; }
+.bars .bar:nth-child(4)::before  { content: "d"; }
+.bars .bar:nth-child(5)::before  { content: "e"; }
+.bars .bar:nth-child(6)::before  { content: "f"; }
+.bars .bar:nth-child(7)::before  { content: "g"; }
+.bars .bar:nth-child(8)::before  { content: "h"; }
+.bars .bar:nth-child(9)::before  { content: "i"; }
+.bars .bar:nth-child(10)::before { content: "j"; }
+.bars .bar:nth-child(11)::before { content: "k"; }
+.bars .bar:nth-child(12)::before { content: "l"; }
+.bars .bar:nth-child(13)::before { content: "m"; }
+.bars .bar:nth-child(14)::before { content: "n"; }
+.bars .bar:nth-child(15)::before { content: "o"; }
+.bars .bar:nth-child(16)::before { content: "p"; }
+.bars .bar:nth-child(17)::before { content: "q"; }
+.bars .bar:nth-child(18)::before { content: "r"; }
+.bars .bar:nth-child(19)::before { content: "s"; }
+.bars .bar:nth-child(20)::before { content: "t"; }
+.bars .bar:nth-child(21)::before { content: "u"; }
+.bars .bar:nth-child(22)::before { content: "v"; }
+.bars .bar:nth-child(23)::before { content: "w"; }
+.bars .bar:nth-child(24)::before { content: "x"; }
+.bars .bar:nth-child(25)::before { content: "y"; }
+.bars .bar:nth-child(26)::before { content: "z"; }
 
 .x-axis-label {
     margin-top: 10px;
@@ -116,10 +177,10 @@ body {
 /* Button Section */
 .resume-button {
     background-color: #90ee90; /* Light green */
-    color: #000080; /* Navy blue */
+    color: #333; /* neutral dark color */
     font-size: 24px;
     font-weight: bold;
-    text-decoration: underline;
+    text-decoration: none;
     text-align: center;
     padding: 20px;
     display: block;
