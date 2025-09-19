@@ -70,7 +70,7 @@ body {
     justify-content: space-between;
     height: 200px;
     position: absolute;
-    left: 10px;
+    left: 0px;
     top: 20px;
 }
 
@@ -94,7 +94,9 @@ body {
     border-left: 1px solid black;
     border-bottom: 1px solid black;
     height: 200px;
-    width: 100%;
+    /* leave space on the left so bars don't overlap the y-axis labels */
+    width: calc(100% - 80px);
+    margin-left: 80px; /* push bars to the right */
 }
 
 .bar {
